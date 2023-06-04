@@ -13,7 +13,7 @@ from .models import *
 
 @login_required
 @csrf_protect
-def consideration(request, ):
+def consideration(request):
     """
     This is a view function that handles user feedback on posts and
     allows for filtering and pagination of feedback objects.
@@ -39,10 +39,10 @@ def consideration(request, ):
 
         if action == 'subscribe':
             Feedback.objects.filter(id=feedback_id).update(user_subscribed=True)
-            SubscribeFeedback.objects.create(user=current_user, feedback=feedback)
+            SubscribeFeedback.objects.create(user=request.user, feedback=feedback)
         elif action == 'unsubscribe':
             Feedback.objects.filter(id=feedback_id).update(user_subscribed=False)
-            SubscribeFeedback.objects.filter(user=current_user, feedback=feedback).delete()
+            SubscribeFeedback.objects.filter(user=request.user, feedback=feedback).delete()
 
     # Filtering and getting objects
     for post in current_user_posts:
@@ -135,6 +135,12 @@ class PublishUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView, ):
     form_class = PostForm
     model = Post
     template_name = 'page_update.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.author != self.request.user:
+            return render(request, '403.html')
+        return super(PublishUpdate, self).dispatch(request, *args, **kwargs)
 
     def get_success_url(self, **kwargs):
         return reverse_lazy("detail", kwargs={"pk": self.get_object().id})

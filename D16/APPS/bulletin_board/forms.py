@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django import forms
-from .models import Post, Feedback
+from .models import *
 
 
 class FeedbackFilterForm(forms.Form):

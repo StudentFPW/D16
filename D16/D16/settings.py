@@ -54,8 +54,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # 'django.middleware.locale.LocaleMiddleware',  # FOR TRANSLATE / BEFORE SESSION AFTER COMMON
-    'django.middleware.cache.UpdateCacheMiddleware',  # FOR CACHES
-    'django.middleware.common.CommonMiddleware',  # FOR CACHES
+    # 'django.middleware.cache.UpdateCacheMiddleware',  # FOR CACHES
+    # 'django.middleware.common.CommonMiddleware',  # FOR CACHES
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

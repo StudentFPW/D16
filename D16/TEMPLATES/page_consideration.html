@@ -13,13 +13,14 @@
 {% endblock title %}
 
 {% block content %}
+    <hr>
 
     <form action="{% url 'consideration' %}" method="get">
         {{ form.as_p }}
         <input type="submit" value="Find"/>
     </form>
 
-    <br>
+    <hr>
 
     <button onclick="window.location.href='http://127.0.0.1:8000/get/feedbacks/'">Reload</button>
 
