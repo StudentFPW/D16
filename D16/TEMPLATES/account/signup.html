@@ -1,0 +1,17 @@
+{% extends 'account/base.html' %}
+
+{% block title %}
+    Signup
+{% endblock title %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Sing up">
+    </form>
+    <hr>
+    <button onclick="window.location.href='http://127.0.0.1:8000/accounts/login/'">You have an account?</button>
+    <hr>
+    <button onclick="window.location.href='http://127.0.0.1:8000/get/board/'">Back</button>
+{% endblock content %}

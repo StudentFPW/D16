@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+<!--{% load i18n %} &lt;!&ndash;FOR TRANSLATE&ndash;&gt;-->
+
+{% block auth %}
+    {% include 'buttons/auth_button.html' %}
+{% endblock auth %}
+
+{% block title %}
+    Delete post ?
+{% endblock title %}
+
+{% block content %}
+    <h1>Delete post</h1>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Delete "{{ object.header }}" ?</p>
+        <input type="submit" value="Delete"/>
+    </form>
+{% endblock content %}
