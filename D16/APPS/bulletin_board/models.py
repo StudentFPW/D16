@@ -1,21 +1,7 @@
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db import models
-from birthday import BirthdayField
 from django.urls import reverse
-
-
-class Author(models.Model):
-    """The Author class is a model that extends the User model and includes additional fields
-    such as avatar, name, surname, and birthday."""
-    user = models.ForeignKey(User, on_delete=models.CASCADE, )
-    avatar = models.ImageField(null=True, blank=True, upload_to="avatar/", )
-    name = models.CharField(null=True, blank=True, max_length=64, )
-    surname = models.CharField(null=True, blank=True, max_length=64, )
-    birthday = BirthdayField(null=True, blank=True, )
-
-    def __str__(self):
-        return f"{self.user}"
 
 
 class Category(models.Model):

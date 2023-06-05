@@ -11,6 +11,20 @@ from .forms import *
 from .models import *
 
 
+class Profile(LoginRequiredMixin, PermissionRequiredMixin, ListView, ):
+    permission_required = ("bulletin_board.delete_post", "bulletin_board.change_post",)
+    raise_exception = True
+    model = Post
+    template_name = 'page_profile.html'
+    context_object_name = 'profile'
+    paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile'] = Post.objects.filter(author_id=self.request.user.id).order_by("datetime")
+        return context
+
+
 @login_required
 @csrf_protect
 def consideration(request):
@@ -159,3 +173,9 @@ class PublishDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView, ):
     model = Post
     template_name = 'page_delete.html'
     success_url = reverse_lazy('board')
+
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if obj.author != self.request.user:
+            return render(request, '403.html')
+        return super(PublishDelete, self).dispatch(request, *args, **kwargs)

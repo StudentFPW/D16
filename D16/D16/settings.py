@@ -28,7 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
-
 INSTALLED_APPS = [
     # 'modeltranslation',  # MUST BE BEFORE ADMIN / FOR TRANSLATE
     'django.contrib.admin',
@@ -101,7 +100,6 @@ WSGI_APPLICATION = 'D16.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# FIXME
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -336,8 +334,8 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_FORMS = {"signup": "FUNC.forms.CustomForm"}
 
-LOGIN_REDIRECT_URL = "http://127.0.0.1:8000/get/board/"
-ACCOUNT_LOGOUT_REDIRECT_URL = "http://127.0.0.1:8000/get/board/"
+LOGIN_REDIRECT_URL = "board"
+ACCOUNT_LOGOUT_REDIRECT_URL = "board"
 
 ########################################################################################################################
 

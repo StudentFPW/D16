@@ -12,7 +12,7 @@
         <input type="hidden" name="next" value="{{ next }}">
     </form>
     <hr>
-    <button onclick="window.location.href=' http://127.0.0.1:8000/accounts/signup/'">Sing up</button>
+    <a href="{% url 'account_signup' %}">Sing up</a>
     <hr>
-    <button onclick="window.location.href='http://127.0.0.1:8000/get/board/'">Back</button>
+    {% include 'buttons/simple_button.html' %}
 {% endblock content %}

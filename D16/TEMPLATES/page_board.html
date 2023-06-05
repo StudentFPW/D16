@@ -4,16 +4,11 @@
 
 <!--{% load i18n %} &lt;!&ndash;FOR TRANSLATE&ndash;&gt;-->
 
-{% block auth %}
-    {% include 'buttons/auth_button.html' %}
-{% endblock auth %}
-
 {% block title %}
     Posts
 {% endblock title %}
 
 {% block content %}
-    <hr>
 
     <form action="" method="get">
         {{ filterset.form.as_p }}
@@ -22,8 +17,8 @@
 
     <hr>
 
-    <form action="/get/board/">
-        <input type="submit" value="Research ?"/>
+    <form action="{% url 'board' %}">
+        <input type="submit" value="Research"/>
     </form>
 
     <hr>
@@ -36,7 +31,7 @@
         {{ data.datetime }}
 
         {% if user.is_authenticated %}
-            <button onclick="window.location.href='http://127.0.0.1:8000/get/{{data.id}}/'">Add comment</button>
+            <a href="{% url 'detail' pk=data.pk %}">Add comment</a>
         {% endif %}
 
         <hr>

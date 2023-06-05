@@ -2,17 +2,16 @@
 
 <!--{% load i18n %} &lt;!&ndash;FOR TRANSLATE&ndash;&gt;-->
 
-{% block auth %}
-    {% include 'buttons/auth_button.html' %}
-{% endblock auth %}
-
 {% block title %}
     Update post
 {% endblock title %}
 
 {% block content %}
+
     <h1>Update post</h1>
+
     <hr>
+
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.media }}
@@ -22,5 +21,6 @@
 
     <hr>
 
-    <button onclick="window.location.href='http://127.0.0.1:8000/get/board/'">Back</button>
+    {% include 'buttons/simple_button.html' %}
+
 {% endblock content %}

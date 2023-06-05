@@ -11,7 +11,8 @@
         <input type="submit" value="Sing up">
     </form>
     <hr>
-    <button onclick="window.location.href='http://127.0.0.1:8000/accounts/login/'">You have an account?</button>
+    <a href="{% url 'account_login' %}">You have an account?</a>
+
     <hr>
-    <button onclick="window.location.href='http://127.0.0.1:8000/get/board/'">Back</button>
+    {% include 'buttons/simple_button.html' %}
 {% endblock content %}

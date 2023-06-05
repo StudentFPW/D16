@@ -1,7 +1,6 @@
 from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
 from django.core.mail import mail_admins
-from APPS.bulletin_board.models import Author
 
 
 class CustomForm(SignupForm):
@@ -15,10 +14,6 @@ class CustomForm(SignupForm):
         # have the permissions and access rights assigned to that group.
         common_users = Group.objects.get(name="common users")
         user.groups.add(common_users)
-
-        # `Author.objects.create(user=user)` creating a new instance of the `Author` model and associating it with the
-        # `user` object that was just created. This allows the user to have an author rules on the site.
-        Author.objects.create(user=user)
 
         mail_admins(
             subject='',
