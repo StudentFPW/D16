@@ -2,14 +2,18 @@
 
 {% load paginator_tag %}
 
-<!--{% load i18n %} &lt;!&ndash;FOR TRANSLATE&ndash;&gt;-->
-
 {% block title %}
     Profile
 {% endblock title %}
 
 {% block content %}
 
+    <hr>
+        {% for data in user_data %}
+            Username: {{ data.username }} <br>
+            Email: {{ data.email }} <br>
+            Date joined: {{ data.date_joined }} <br>
+        {% endfor %}
     <hr>
 
     {% if profile %}
@@ -20,7 +24,7 @@
             {% if perms.bulletin_board.change_post %}
                 <a href="{% url 'update' pk=data.id %}">Update</a>
             {% endif %}
-
+            or
             {% if perms.bulletin_board.delete_post %}
                 <a href="{% url 'delete' data.id %}">Delete ?</a>
             {% endif %}

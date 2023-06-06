@@ -12,8 +12,9 @@ from .models import *
 
 
 class Profile(LoginRequiredMixin, PermissionRequiredMixin, ListView, ):
+    """This is a class-based view that displays a user's profile page with their posts and user data."""
     permission_required = ("bulletin_board.delete_post", "bulletin_board.change_post",)
-    raise_exception = True
+    raise_exception = False
     model = Post
     template_name = 'page_profile.html'
     context_object_name = 'profile'
@@ -21,6 +22,7 @@ class Profile(LoginRequiredMixin, PermissionRequiredMixin, ListView, ):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['user_data'] = User.objects.filter(id=self.request.user.id)
         context['profile'] = Post.objects.filter(author_id=self.request.user.id).order_by("datetime")
         return context
 
@@ -100,7 +102,7 @@ class PublishBoard(ListView, ):
 class PublishDetail(LoginRequiredMixin, FormMixin, DetailView, ):
     """This is a class that displays the details of a post and
     allows users to add comments, while requiring login authentication."""
-    raise_exception = True
+    raise_exception = False
     model = Post
     template_name = 'page_detail.html'
     context_object_name = 'detail'
@@ -128,7 +130,7 @@ class PublishPost(LoginRequiredMixin, PermissionRequiredMixin, CreateView, ):
     """This is a class-based view for creating and publishing a post on
     a bulletin board, with login and permission requirements"""
     permission_required = ("bulletin_board.add_post",)
-    raise_exception = True
+    raise_exception = False
     form_class = PostForm
     model = Post
     template_name = 'page_create.html'

@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 
 # Application definition
 INSTALLED_APPS = [
-    # 'modeltranslation',  # MUST BE BEFORE ADMIN / FOR TRANSLATE
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.auth',
@@ -38,11 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
-    # 'django_apscheduler',
+    'django_apscheduler',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # 'rest_framework',
     'APPS.bulletin_board',
     'ckeditor',
 ]
@@ -52,9 +50,8 @@ SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'django.middleware.locale.LocaleMiddleware',  # FOR TRANSLATE / BEFORE SESSION AFTER COMMON
     # 'django.middleware.cache.UpdateCacheMiddleware',  # FOR CACHES
-    # 'django.middleware.common.CommonMiddleware',  # FOR CACHES
+    'django.middleware.common.CommonMiddleware',  # FOR CACHES
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -131,14 +128,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # LANGUAGE SETTINGS
 
-# We recommend that you use the updated version of the gettext 0.21 package:
-# https://mlocati.github.io/articles/gettext-iconv-windows.html
-
-# SET ENVIRONMENT VARIABLES
-# NAME = GETTEXTCLDRDIR
-# PATH = C:\Program Files\gettext-iconv\lib\gettext
-# BOTH SYSTEM SETTINGS!!!
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -149,20 +138,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-# FIXME
-# LOCALE_PATHS = [
-#     os.path.join(BASE_DIR, 'locale')
-# ]
-
-# FIXME
-# LANGUAGES = [
-#     ('en-us', 'English'),
-#     ('ru', 'Русский')
-# ]
-
-# ATTENTION: if you did not receive a translation, then most likely you have different language in your browser,
-# when changing the language to YOUR, everything should work.
 
 ########################################################################################################################
 
@@ -183,19 +158,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "MEDIA")
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-########################################################################################################################
-
-# REDIS SETTINGS
-
-# FIXME
-# CELERY_BROKER_URL = f'redis://default:2HAqxmH1hHuoPZckq35klXdOaWOtTn1U' \
-#                     f'@redis-00000.c16.us-east-1-2.ec2.cloud.redislabs.com:00000'
-# CELERY_RESULT_BACKEND = f'redis://default:2HAqxmH1hHuoPZckq35klXdOaWOtTn1U' \
-#                         f'@redis-00000.c16.us-east-1-2.ec2.cloud.redislabs.com:00000'
-# CELERY_ACCEPT_CONTENT = ['application/json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
 
 ########################################################################################################################
 
@@ -360,20 +322,5 @@ SERVER_EMAIL = "ljofe@yandex.ru"
 ADMINS = (
     ('Admin', 'jofeleonids00@gmail.com'),
 )
-
-########################################################################################################################
-
-# FOR REST API - REPRESENTATIONAL STATE TRANSFER APP PROGRAMMING INTERFACE
-
-# FIXME
-# REST_FRAMEWORK = {
-#     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-#     'PAGE_SIZE': 10,
-#     'DEFAULT_PERMISSION_CLASSES': [
-#         'rest_framework.permissions.IsAuthenticated',
-#     ]
-#
-# }
 
 ########################################################################################################################

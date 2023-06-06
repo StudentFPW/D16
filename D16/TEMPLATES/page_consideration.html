@@ -2,8 +2,6 @@
 
 {% load paginator_tag %}
 
-<!--{% load i18n %} &lt;!&ndash;FOR TRANSLATE&ndash;&gt;-->
-
 {% block title %}
     Feedbacks consideration
 {% endblock title %}
@@ -28,7 +26,7 @@
                 <h4>User {{ object.feedback_user }}, leave feedback in {{ object.feedback_post.header }} post</h4>
                 <h5>{{ object.text }}</h5>
                 <h6>{{ object.datetime }}</h6>
-                <h6>{{ object.feedback_user.email }}</h6>
+                <a href="mailto:{{ object.feedback_user.email }}">Send mail to {{ object.feedback_user.email }}</a>
 
                 <form method="post">
                     {% csrf_token %}
