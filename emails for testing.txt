@@ -7,7 +7,6 @@ Have some data from testing ↓
 adress: testeertesting03@gmail.com
 password: i76rc3bi74r6tcb3i4
 
-
 site login:
 site password: mnbvcxz12345
 
