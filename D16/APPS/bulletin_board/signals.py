@@ -57,19 +57,19 @@ def feedback_received(instance, created, **kwargs):
     This function sends an email to the user and admins when a new feedback is received for a post.
 
     param instance:
-        The instance parameter refers to the instance of the SubscribeFeedback model that was just saved.
+        The instance of the SubscribeFeedback model that was just saved
 
     param created:
-        A boolean value that indicates whether the instance of the SubscribeFeedback model was just created or not.
+        A boolean value that indicates whether the instance of the SubscribeFeedback model was just created or not
 
     return:
-        If `created` is `True`, nothing is being returned. If `created` is `False`,
-        the function returns `None` immediately.
+        If `created` is `True`, nothing is being returned.
+        If `created` is `False`, the function returns `None`.
     """
     if not created:
         return
 
-    user_id = SubscribeFeedback.objects.all().values().last()["user_id"]
+    user_id = Feedback.objects.all().values().last()["feedback_user_id"]
 
     email = [User.objects.filter(id=user_id).values("email").last()["email"]]
 

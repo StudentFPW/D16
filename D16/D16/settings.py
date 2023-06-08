@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     # 'django.middleware.cache.UpdateCacheMiddleware',  # FOR CACHES
-    'django.middleware.common.CommonMiddleware',  # FOR CACHES
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -163,7 +163,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CACHE SETTINGS
 
-# FIXME
 # CACHES = {
 #     'default': {
 #         'TIMEOUT': 60,
@@ -293,7 +292,6 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
-ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_FORMS = {"signup": "FUNC.forms.CustomForm"}
 
 LOGIN_REDIRECT_URL = "board"
@@ -303,22 +301,22 @@ ACCOUNT_LOGOUT_REDIRECT_URL = "board"
 
 # SMTP SETTINGS
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # FOR TESTING #
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # FOR REAL TESTING #
-EMAIL_HOST = 'smtp.yandex.ru'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # FOR TESTING #
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # FOR REAL TESTING #
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = "ljofe@yandex.ru"
-EMAIL_HOST_PASSWORD = 'vnrodqfqorptmsxh'
+EMAIL_HOST_USER = "ref.partner.service@gmail.com"
+EMAIL_HOST_PASSWORD = 'parpmruxhmyholwr'
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-DEFAULT_FROM_EMAIL = "ljofe@yandex.ru"
+DEFAULT_FROM_EMAIL = "ref.partner.service@gmail.com"
 
 ########################################################################################################################
 
 # SEND TO (SETTINGS)
 
 EMAIL_SUBJECT_PREFIX = "NOTIFICATION"
-SERVER_EMAIL = "ljofe@yandex.ru"
+SERVER_EMAIL = "ref.partner.service@gmail.com"
 ADMINS = (
     ('Admin', 'jofeleonids00@gmail.com'),
 )

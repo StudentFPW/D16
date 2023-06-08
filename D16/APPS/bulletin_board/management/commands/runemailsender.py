@@ -60,7 +60,8 @@ class Command(BaseCommand):
 
         scheduler.add_job(
             my_job,
-            trigger=CronTrigger(second="0 9 * * 1"),
+            # trigger=CronTrigger(second="00 9 * * 1"),  # 09:00 on every Monday
+            trigger=CronTrigger(second="*/10"),  # For testing
             id="my_job",
             max_instances=1,
             replace_existing=True,

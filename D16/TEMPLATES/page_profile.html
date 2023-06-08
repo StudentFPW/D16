@@ -34,6 +34,10 @@
         <h1>You don't have any post yet ✍️(◔◡◔)</h1>
     {% endif %}
 
+    {% include 'buttons/simple_button.html' %}
+
+    <hr>
+
     {% if page_obj.has_previous %}
         <a href="?{% url_replace page=1 %}"> first</a>
         <a href="?{% url_replace page=page_obj.previous_page_number %}"> previous</a>
